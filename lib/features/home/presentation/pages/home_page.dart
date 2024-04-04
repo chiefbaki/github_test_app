@@ -4,15 +4,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:git_test/core/utils/resources/resources.dart';
 import 'package:git_test/features/home/presentation/cubit/users/users_cubit.dart';
-import 'package:git_test/features/home/presentation/widgets/custom_user_card.dart';
+import 'package:git_test/features/home/presentation/local_widgets/custom_user_card.dart';
 
 @RoutePage()
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<UsersCubit>().getUsers();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    BlocProvider.of<UsersCubit>(context).getUsers();
     return Scaffold(
         backgroundColor: Colors.transparent,
         body: Stack(
@@ -35,9 +45,7 @@ class HomePage extends StatelessWidget {
                       builder: (context, state) {
                         return state.when(
                             initial: () => const SizedBox(),
-                            loading: () => const Center(
-                                  child: CircularProgressIndicator.adaptive(),
-                                ),
+                            loading: () => const SizedBox(),
                             success: (users) {
                               return Expanded(
                                 child: Padding(
@@ -45,9 +53,10 @@ class HomePage extends StatelessWidget {
                                     horizontal: 46,
                                   ),
                                   child: ListView.separated(
+                                    padding: EdgeInsets.zero,
+                                    shrinkWrap: true,
                                     itemCount: users.length,
                                     itemBuilder: (_, index) {
-                                    
                                       return CustomUserCard(
                                         users: users[index],
                                       );
@@ -64,6 +73,18 @@ class HomePage extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+            ),
+            Positioned.fill(
+              child: BlocBuilder<UsersCubit, UsersState>(
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    loading: () => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    orElse: () => const SizedBox(),
+                  );
+                },
               ),
             ),
           ],

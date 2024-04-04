@@ -8,5 +8,6 @@ class Images {
   static const String background = 'assets/imgs/background.png';
   static const String backgroundimg = 'assets/imgs/backgroundimg.png';
   static const String earth = 'assets/imgs/earth.png';
+  static const String gitFork = 'assets/imgs/git-fork.png';
   static const String logo = 'assets/imgs/logo.png';
 }

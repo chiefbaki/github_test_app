@@ -10,6 +10,7 @@ void main() {
     expect(File(Images.background).existsSync(), isTrue);
     expect(File(Images.backgroundimg).existsSync(), isTrue);
     expect(File(Images.earth).existsSync(), isTrue);
+    expect(File(Images.gitFork).existsSync(), isTrue);
     expect(File(Images.logo).existsSync(), isTrue);
   });
 }

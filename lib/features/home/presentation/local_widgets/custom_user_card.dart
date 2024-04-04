@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:git_test/core/theme/app_colors.dart';
-import 'package:git_test/features/home/data/models/users_dto.dart';
-import 'package:git_test/features/home/presentation/widgets/custom_list_tile.dart';
+import 'package:git_test/features/home/data/models/users/users_dto.dart';
+import 'package:git_test/features/home/presentation/local_widgets/custom_list_tile.dart';
 
 class CustomUserCard extends StatelessWidget {
   final UsersDto users;

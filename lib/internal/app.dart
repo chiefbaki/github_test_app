@@ -4,9 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:git_test/core/config/network/network_settings/dio_settings.dart';
 import 'package:git_test/core/config/routes/app_router.dart';
 import 'package:git_test/core/theme/app_theme.dart';
+import 'package:git_test/features/home/data/repository/repos_impl.dart';
 import 'package:git_test/features/home/data/repository/users_impl.dart';
+import 'package:git_test/features/home/domain/usecase/repos_usecase.dart';
 import 'package:git_test/features/home/domain/usecase/users_usecase.dart';
 import 'package:git_test/features/home/presentation/cubit/details/details_cubit.dart';
+import 'package:git_test/features/home/presentation/cubit/repos/repos_cubit.dart';
 import 'package:git_test/features/home/presentation/cubit/users/users_cubit.dart';
 
 class MyApp extends StatefulWidget {
@@ -34,6 +37,14 @@ class _MyAppState extends State<MyApp> {
           create: (context) =>
               UsersImpl(useCase: RepositoryProvider.of<UsersUseCase>(context)),
         ),
+        RepositoryProvider(
+          create: (context) => ReposUseCase(
+              dio: RepositoryProvider.of<DioSettings>(context).dio),
+        ),
+        RepositoryProvider(
+          create: (context) =>
+              ReposImpl(useCase: RepositoryProvider.of<ReposUseCase>(context)),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -44,6 +55,10 @@ class _MyAppState extends State<MyApp> {
           BlocProvider(
             create: (context) => DetailsCubit(
                 repository: RepositoryProvider.of<UsersImpl>(context)),
+          ),
+          BlocProvider(
+            create: (context) => ReposCubit(
+                repository: RepositoryProvider.of<ReposImpl>(context)),
           ),
         ],
         child: ScreenUtilInit(

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:git_test/features/home/data/models/users_dto.dart';
+import 'package:flutter/material.dart';
+import 'package:git_test/features/home/data/models/users/users_dto.dart';
 
 class UsersUseCase {
   final Dio _dio;
@@ -18,7 +19,7 @@ class UsersUseCase {
 
   Future<UsersDto> getDetail({required String login}) async {
     final Response response = await _dio.get("/$login");
-    print(UsersDto.fromJson(response.data));
+    debugPrint(UsersDto.fromJson(response.data).toString());
     return UsersDto.fromJson(response.data);
   }
 }
