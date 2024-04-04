@@ -20,9 +20,9 @@ UsersDto _$UsersDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UsersDto {
-  String get login => throw _privateConstructorUsedError;
-  String get avatar => throw _privateConstructorUsedError;
-  String get followers => throw _privateConstructorUsedError;
+  String? get login => throw _privateConstructorUsedError;
+  String get avatar_url => throw _privateConstructorUsedError;
+  String? get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $UsersDtoCopyWith<$Res> {
   factory $UsersDtoCopyWith(UsersDto value, $Res Function(UsersDto) then) =
       _$UsersDtoCopyWithImpl<$Res, UsersDto>;
   @useResult
-  $Res call({String login, String avatar, String followers});
+  $Res call({String? login, String avatar_url, String? type});
 }
 
 /// @nodoc
@@ -51,23 +51,23 @@ class _$UsersDtoCopyWithImpl<$Res, $Val extends UsersDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? login = null,
-    Object? avatar = null,
-    Object? followers = null,
+    Object? login = freezed,
+    Object? avatar_url = null,
+    Object? type = freezed,
   }) {
     return _then(_value.copyWith(
-      login: null == login
+      login: freezed == login
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
+              as String?,
+      avatar_url: null == avatar_url
+          ? _value.avatar_url
+          : avatar_url // ignore: cast_nullable_to_non_nullable
               as String,
-      avatar: null == avatar
-          ? _value.avatar
-          : avatar // ignore: cast_nullable_to_non_nullable
-              as String,
-      followers: null == followers
-          ? _value.followers
-          : followers // ignore: cast_nullable_to_non_nullable
-              as String,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -80,7 +80,7 @@ abstract class _$$UsersDtoImplCopyWith<$Res>
       __$$UsersDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String login, String avatar, String followers});
+  $Res call({String? login, String avatar_url, String? type});
 }
 
 /// @nodoc
@@ -94,23 +94,23 @@ class __$$UsersDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? login = null,
-    Object? avatar = null,
-    Object? followers = null,
+    Object? login = freezed,
+    Object? avatar_url = null,
+    Object? type = freezed,
   }) {
     return _then(_$UsersDtoImpl(
-      login: null == login
+      login: freezed == login
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
+              as String?,
+      avatar_url: null == avatar_url
+          ? _value.avatar_url
+          : avatar_url // ignore: cast_nullable_to_non_nullable
               as String,
-      avatar: null == avatar
-          ? _value.avatar
-          : avatar // ignore: cast_nullable_to_non_nullable
-              as String,
-      followers: null == followers
-          ? _value.followers
-          : followers // ignore: cast_nullable_to_non_nullable
-              as String,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -119,21 +119,21 @@ class __$$UsersDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UsersDtoImpl implements _UsersDto {
   const _$UsersDtoImpl(
-      {required this.login, required this.avatar, required this.followers});
+      {required this.login, required this.avatar_url, required this.type});
 
   factory _$UsersDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$UsersDtoImplFromJson(json);
 
   @override
-  final String login;
+  final String? login;
   @override
-  final String avatar;
+  final String avatar_url;
   @override
-  final String followers;
+  final String? type;
 
   @override
   String toString() {
-    return 'UsersDto(login: $login, avatar: $avatar, followers: $followers)';
+    return 'UsersDto(login: $login, avatar_url: $avatar_url, type: $type)';
   }
 
   @override
@@ -142,14 +142,14 @@ class _$UsersDtoImpl implements _UsersDto {
         (other.runtimeType == runtimeType &&
             other is _$UsersDtoImpl &&
             (identical(other.login, login) || other.login == login) &&
-            (identical(other.avatar, avatar) || other.avatar == avatar) &&
-            (identical(other.followers, followers) ||
-                other.followers == followers));
+            (identical(other.avatar_url, avatar_url) ||
+                other.avatar_url == avatar_url) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, login, avatar, followers);
+  int get hashCode => Object.hash(runtimeType, login, avatar_url, type);
 
   @JsonKey(ignore: true)
   @override
@@ -167,19 +167,19 @@ class _$UsersDtoImpl implements _UsersDto {
 
 abstract class _UsersDto implements UsersDto {
   const factory _UsersDto(
-      {required final String login,
-      required final String avatar,
-      required final String followers}) = _$UsersDtoImpl;
+      {required final String? login,
+      required final String avatar_url,
+      required final String? type}) = _$UsersDtoImpl;
 
   factory _UsersDto.fromJson(Map<String, dynamic> json) =
       _$UsersDtoImpl.fromJson;
 
   @override
-  String get login;
+  String? get login;
   @override
-  String get avatar;
+  String get avatar_url;
   @override
-  String get followers;
+  String? get type;
   @override
   @JsonKey(ignore: true)
   _$$UsersDtoImplCopyWith<_$UsersDtoImpl> get copyWith =>

@@ -5,9 +5,9 @@ part 'users_dto.g.dart';
 @freezed
 class UsersDto with _$UsersDto {
   const factory UsersDto(
-      {required String login,
-      required String avatar,
-      required String followers}) = _UsersDto;
+      {required String? login,
+      required String avatar_url,
+      required String? type}) = _UsersDto;
   factory UsersDto.fromJson(Map<String, dynamic> json) =>
       _$UsersDtoFromJson(json);
 }

@@ -14,7 +14,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   void routing() {
     Future.delayed(const Duration(seconds: 3), () {
-      context.router.push(const HomeRoute());
+      context.router.push(const DashboardRoute());
     });
   }
 
