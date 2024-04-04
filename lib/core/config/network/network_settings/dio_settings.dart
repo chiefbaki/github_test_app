@@ -3,7 +3,6 @@ import "package:dio/dio.dart";
 import "package:flutter/foundation.dart";
 import "package:git_test/core/utils/constants/api_consts.dart";
 
-
 class DioSettings {
   DioSettings() {
     unawaited(setup());
@@ -15,6 +14,7 @@ class DioSettings {
       contentType: "application/json",
       headers: {
         "Accept": "application/json",
+        "Authorization": "Bearer ${ApiConsts.token}"
       },
       connectTimeout: const Duration(seconds: 20),
       receiveTimeout: const Duration(seconds: 20),
@@ -31,12 +31,15 @@ class DioSettings {
       responseBody: true,
     );
 
-    final QueuedInterceptorsWrapper headerInterceptors = QueuedInterceptorsWrapper(
-      onRequest: (RequestOptions options, RequestInterceptorHandler handler) => handler.next(options),
+    final QueuedInterceptorsWrapper headerInterceptors =
+        QueuedInterceptorsWrapper(
+      onRequest: (RequestOptions options, RequestInterceptorHandler handler) =>
+          handler.next(options),
       onError: (DioException error, ErrorInterceptorHandler handler) {
         handler.next(error);
       },
-      onResponse: (Response response, ResponseInterceptorHandler handler) => handler.next(response),
+      onResponse: (Response response, ResponseInterceptorHandler handler) =>
+          handler.next(response),
     );
     interceptors.addAll([if (kDebugMode) logInterceptor, headerInterceptors]);
   }

@@ -5,14 +5,25 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:git_test/core/config/routes/app_router.dart';
 import 'package:git_test/core/theme/app_fonts.dart';
 import 'package:git_test/core/utils/resources/resources.dart';
-import 'package:git_test/features/home/presentation/cubit/users_cubit.dart';
+import 'package:git_test/features/home/presentation/cubit/details/details_cubit.dart';
+
 
 class CustomListTile extends StatelessWidget {
   final String login;
   final String type;
   final String img;
-  const CustomListTile(
-      {super.key, required this.login, required this.type, required this.img});
+  // final String company;
+  // final String bio;
+  // final String name;
+  // final String location;
+  // final int followers;
+  // final int following;
+  const CustomListTile({
+    super.key,
+    required this.login,
+    required this.type,
+    required this.img,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +42,8 @@ class CustomListTile extends StatelessWidget {
       ),
       trailing: IconButton(
           onPressed: () {
-            context.router.push(UserDetailRoute(login: login));
-            context.read<UsersCubit>().getUsers(login: "/$login");
+            context.read<DetailsCubit>().getDetails(login: login);
+            context.router.push(UserDetailRoute());
           },
           icon: Image.asset(Images.arrowRight)),
     );

@@ -11,6 +11,12 @@ _$UsersDtoImpl _$$UsersDtoImplFromJson(Map<String, dynamic> json) =>
       login: json['login'] as String?,
       avatar_url: json['avatar_url'] as String,
       type: json['type'] as String?,
+      name: json['name'] as String?,
+      company: json['company'] as String?,
+      location: json['location'] as String?,
+      bio: json['bio'] as String?,
+      followers: json['followers'] as int?,
+      following: json['following'] as int?,
     );
 
 Map<String, dynamic> _$$UsersDtoImplToJson(_$UsersDtoImpl instance) =>
@@ -18,4 +24,10 @@ Map<String, dynamic> _$$UsersDtoImplToJson(_$UsersDtoImpl instance) =>
       'login': instance.login,
       'avatar_url': instance.avatar_url,
       'type': instance.type,
+      'name': instance.name,
+      'company': instance.company,
+      'location': instance.location,
+      'bio': instance.bio,
+      'followers': instance.followers,
+      'following': instance.following,
     };

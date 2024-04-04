@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:git_test/core/utils/resources/resources.dart';
-import 'package:git_test/features/home/presentation/cubit/users_cubit.dart';
-import 'package:git_test/features/widgets/custom_user_card.dart';
+import 'package:git_test/features/home/presentation/cubit/users/users_cubit.dart';
+import 'package:git_test/features/home/presentation/widgets/custom_user_card.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget {
@@ -39,7 +39,6 @@ class HomePage extends StatelessWidget {
                                   child: CircularProgressIndicator.adaptive(),
                                 ),
                             success: (users) {
-                              
                               return Expanded(
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
@@ -48,7 +47,7 @@ class HomePage extends StatelessWidget {
                                   child: ListView.separated(
                                     itemCount: users.length,
                                     itemBuilder: (_, index) {
-                                      print(users[index].avatar_url);
+                                    
                                       return CustomUserCard(
                                         users: users[index],
                                       );

@@ -23,6 +23,12 @@ mixin _$UsersDto {
   String? get login => throw _privateConstructorUsedError;
   String get avatar_url => throw _privateConstructorUsedError;
   String? get type => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get company => throw _privateConstructorUsedError;
+  String? get location => throw _privateConstructorUsedError;
+  String? get bio => throw _privateConstructorUsedError;
+  int? get followers => throw _privateConstructorUsedError;
+  int? get following => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +41,16 @@ abstract class $UsersDtoCopyWith<$Res> {
   factory $UsersDtoCopyWith(UsersDto value, $Res Function(UsersDto) then) =
       _$UsersDtoCopyWithImpl<$Res, UsersDto>;
   @useResult
-  $Res call({String? login, String avatar_url, String? type});
+  $Res call(
+      {String? login,
+      String avatar_url,
+      String? type,
+      String? name,
+      String? company,
+      String? location,
+      String? bio,
+      int? followers,
+      int? following});
 }
 
 /// @nodoc
@@ -54,6 +69,12 @@ class _$UsersDtoCopyWithImpl<$Res, $Val extends UsersDto>
     Object? login = freezed,
     Object? avatar_url = null,
     Object? type = freezed,
+    Object? name = freezed,
+    Object? company = freezed,
+    Object? location = freezed,
+    Object? bio = freezed,
+    Object? followers = freezed,
+    Object? following = freezed,
   }) {
     return _then(_value.copyWith(
       login: freezed == login
@@ -68,6 +89,30 @@ class _$UsersDtoCopyWithImpl<$Res, $Val extends UsersDto>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      company: freezed == company
+          ? _value.company
+          : company // ignore: cast_nullable_to_non_nullable
+              as String?,
+      location: freezed == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bio: freezed == bio
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
+              as String?,
+      followers: freezed == followers
+          ? _value.followers
+          : followers // ignore: cast_nullable_to_non_nullable
+              as int?,
+      following: freezed == following
+          ? _value.following
+          : following // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -80,7 +125,16 @@ abstract class _$$UsersDtoImplCopyWith<$Res>
       __$$UsersDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? login, String avatar_url, String? type});
+  $Res call(
+      {String? login,
+      String avatar_url,
+      String? type,
+      String? name,
+      String? company,
+      String? location,
+      String? bio,
+      int? followers,
+      int? following});
 }
 
 /// @nodoc
@@ -97,6 +151,12 @@ class __$$UsersDtoImplCopyWithImpl<$Res>
     Object? login = freezed,
     Object? avatar_url = null,
     Object? type = freezed,
+    Object? name = freezed,
+    Object? company = freezed,
+    Object? location = freezed,
+    Object? bio = freezed,
+    Object? followers = freezed,
+    Object? following = freezed,
   }) {
     return _then(_$UsersDtoImpl(
       login: freezed == login
@@ -111,6 +171,30 @@ class __$$UsersDtoImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      company: freezed == company
+          ? _value.company
+          : company // ignore: cast_nullable_to_non_nullable
+              as String?,
+      location: freezed == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bio: freezed == bio
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
+              as String?,
+      followers: freezed == followers
+          ? _value.followers
+          : followers // ignore: cast_nullable_to_non_nullable
+              as int?,
+      following: freezed == following
+          ? _value.following
+          : following // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -119,7 +203,15 @@ class __$$UsersDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UsersDtoImpl implements _UsersDto {
   const _$UsersDtoImpl(
-      {required this.login, required this.avatar_url, required this.type});
+      {required this.login,
+      required this.avatar_url,
+      required this.type,
+      required this.name,
+      required this.company,
+      required this.location,
+      required this.bio,
+      required this.followers,
+      required this.following});
 
   factory _$UsersDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$UsersDtoImplFromJson(json);
@@ -130,10 +222,22 @@ class _$UsersDtoImpl implements _UsersDto {
   final String avatar_url;
   @override
   final String? type;
+  @override
+  final String? name;
+  @override
+  final String? company;
+  @override
+  final String? location;
+  @override
+  final String? bio;
+  @override
+  final int? followers;
+  @override
+  final int? following;
 
   @override
   String toString() {
-    return 'UsersDto(login: $login, avatar_url: $avatar_url, type: $type)';
+    return 'UsersDto(login: $login, avatar_url: $avatar_url, type: $type, name: $name, company: $company, location: $location, bio: $bio, followers: $followers, following: $following)';
   }
 
   @override
@@ -144,12 +248,22 @@ class _$UsersDtoImpl implements _UsersDto {
             (identical(other.login, login) || other.login == login) &&
             (identical(other.avatar_url, avatar_url) ||
                 other.avatar_url == avatar_url) &&
-            (identical(other.type, type) || other.type == type));
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.company, company) || other.company == company) &&
+            (identical(other.location, location) ||
+                other.location == location) &&
+            (identical(other.bio, bio) || other.bio == bio) &&
+            (identical(other.followers, followers) ||
+                other.followers == followers) &&
+            (identical(other.following, following) ||
+                other.following == following));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, login, avatar_url, type);
+  int get hashCode => Object.hash(runtimeType, login, avatar_url, type, name,
+      company, location, bio, followers, following);
 
   @JsonKey(ignore: true)
   @override
@@ -169,7 +283,13 @@ abstract class _UsersDto implements UsersDto {
   const factory _UsersDto(
       {required final String? login,
       required final String avatar_url,
-      required final String? type}) = _$UsersDtoImpl;
+      required final String? type,
+      required final String? name,
+      required final String? company,
+      required final String? location,
+      required final String? bio,
+      required final int? followers,
+      required final int? following}) = _$UsersDtoImpl;
 
   factory _UsersDto.fromJson(Map<String, dynamic> json) =
       _$UsersDtoImpl.fromJson;
@@ -180,6 +300,18 @@ abstract class _UsersDto implements UsersDto {
   String get avatar_url;
   @override
   String? get type;
+  @override
+  String? get name;
+  @override
+  String? get company;
+  @override
+  String? get location;
+  @override
+  String? get bio;
+  @override
+  int? get followers;
+  @override
+  int? get following;
   @override
   @JsonKey(ignore: true)
   _$$UsersDtoImplCopyWith<_$UsersDtoImpl> get copyWith =>

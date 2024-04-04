@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:git_test/core/theme/app_colors.dart';
 import 'package:git_test/features/home/data/models/users_dto.dart';
-import 'package:git_test/features/widgets/custom_list_tile.dart';
+import 'package:git_test/features/home/presentation/widgets/custom_list_tile.dart';
 
 class CustomUserCard extends StatelessWidget {
   final UsersDto users;
@@ -17,7 +17,7 @@ class CustomUserCard extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: CustomListTile(
             login: users.login ?? "",
-            img: users.avatar_url ?? "",
+            img: users.avatar_url,
             type: users.type ?? "",
           ),
         ),

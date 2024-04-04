@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:git_test/core/config/routes/dashboard.dart';
 import 'package:git_test/core/utils/resources/splash/splash_screen.dart';
+import 'package:git_test/features/home/data/models/users_dto.dart';
 import 'package:git_test/features/home/presentation/pages/home_page.dart';
 import 'package:git_test/features/home/presentation/pages/users_detail_page.dart';
 import 'package:git_test/features/settings/presentation/settings_page.dart';
