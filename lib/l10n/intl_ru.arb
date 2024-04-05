@@ -7,5 +7,6 @@
   "settings": "Настройки",
   "user": "Пользователь",
   "admin": "Администратор",
-  "darkTheme": "Dark theme"
+  "darkTheme": "Темная тема",
+  "searchUser": "Поиск пользователя..."
 }

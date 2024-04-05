@@ -7,5 +7,6 @@
   "settings": "Settings",
   "user": "User",
   "admin": "Admin",
-  "darkTheme": "Dark theme"
+  "darkTheme": "Dark theme",
+  "searchUser": "Search user..."
 }

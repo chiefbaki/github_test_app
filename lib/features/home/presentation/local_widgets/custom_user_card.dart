@@ -5,24 +5,22 @@ import 'package:git_test/features/home/presentation/local_widgets/custom_list_ti
 
 class CustomUserCard extends StatelessWidget {
   final UsersDto users;
-  const CustomUserCard({super.key, required this.users});
+  const CustomUserCard({super.key, required this.users,});
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: Container(
-        decoration: BoxDecoration(
-            color: Theme.of(context).brightness == Brightness.light
-                ? AppColors.blue
-                : AppColors.grey,
-            borderRadius: BorderRadius.circular(12)),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: CustomListTile(
-            login: users.login ?? "",
-            img: users.avatar_url ?? "",
-            type: users.type ?? "",
-          ),
+    return Container(
+      decoration: BoxDecoration(
+          color: Theme.of(context).brightness == Brightness.light
+              ? AppColors.blue
+              : AppColors.grey,
+          borderRadius: BorderRadius.circular(12)),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: CustomListTile(
+          login: users.login ?? "",
+          img: users.avatar_url ?? "",
+          type: users.type ?? "",
         ),
       ),
     );

@@ -19,15 +19,4 @@ class UsersImpl implements UsersRepository {
     }
     return users;
   }
-  // final UsersUseCase _useCase;
-  // UsersImpl({required UsersUseCase useCase}) : _useCase = useCase;
-  // @override
-  // Future<List<UsersDto>> getUsers() async{
-  //   return await _useCase.getUsers();
-  // }
-
-  // @override
-  // Future<UsersDto> getDetails({required String login}) async{
-  //   return await _useCase.getDetail(login: login);
-  // }
 }

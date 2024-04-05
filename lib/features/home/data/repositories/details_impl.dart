@@ -14,17 +14,4 @@ class DetailsImpl implements DetailsRepository {
     return UsersDto.fromJson(response.data);
   }
   
-
-
-  // final UsersUseCase _useCase;
-  // UsersImpl({required UsersUseCase useCase}) : _useCase = useCase;
-  // @override
-  // Future<List<UsersDto>> getUsers() async{
-  //   return await _useCase.getUsers();
-  // }
-
-  // @override
-  // Future<UsersDto> getDetails({required String login}) async{
-  //   return await _useCase.getDetail(login: login);
-  // }
 }

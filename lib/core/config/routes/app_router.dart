@@ -14,13 +14,14 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         // Splash screen
-        AutoRoute(page: SplashRoute.page, initial: true),
+        AutoRoute(
+          page: SplashRoute.page,
+        ),
         // Bottom nav bar
-        AutoRoute(page: DashboardRoute.page, children: [
-          AutoRoute(page: HomeRoute.page, ),
+        AutoRoute(page: DashboardRoute.page, initial: true, children: [
+          AutoRoute(page: HomeRoute.page, initial: true),
           AutoRoute(
             page: SettingsRoute.page,
-            initial: true
           ),
         ]),
 

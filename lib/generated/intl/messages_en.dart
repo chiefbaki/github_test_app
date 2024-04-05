@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "following": MessageLookupByLibrary.simpleMessage(" following"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "repositories": MessageLookupByLibrary.simpleMessage("Repositories"),
+        "searchUser": MessageLookupByLibrary.simpleMessage("Search user..."),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "title": MessageLookupByLibrary.simpleMessage("Github users"),
         "user": MessageLookupByLibrary.simpleMessage("User")

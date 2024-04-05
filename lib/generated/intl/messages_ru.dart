@@ -23,11 +23,13 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "admin": MessageLookupByLibrary.simpleMessage("Администратор"),
-        "darkTheme": MessageLookupByLibrary.simpleMessage("Dark theme"),
+        "darkTheme": MessageLookupByLibrary.simpleMessage("Темная тема"),
         "followers": MessageLookupByLibrary.simpleMessage("  подписчики"),
         "following": MessageLookupByLibrary.simpleMessage("  мои подписки"),
         "home": MessageLookupByLibrary.simpleMessage("Главная"),
         "repositories": MessageLookupByLibrary.simpleMessage("Репозитории"),
+        "searchUser":
+            MessageLookupByLibrary.simpleMessage("Поиск пользователя..."),
         "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
         "title": MessageLookupByLibrary.simpleMessage("Github пользователи"),
         "user": MessageLookupByLibrary.simpleMessage("Пользователь")

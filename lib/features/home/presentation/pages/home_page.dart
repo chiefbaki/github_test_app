@@ -19,6 +19,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final _controller = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -31,6 +33,7 @@ class _HomePageState extends State<HomePage> {
   void dispose() {
     super.dispose();
     context.read<InternetConnectionCubit>().dispose();
+    _controller.dispose();
   }
 
   @override
@@ -46,7 +49,8 @@ class _HomePageState extends State<HomePage> {
                           ? const SizedBox()
                           : Image.asset(Images.background),
                       Padding(
-                        padding: const EdgeInsets.only(top: 60),
+                        padding:
+                            const EdgeInsets.only(top: 60, left: 16, right: 16),
                         child: Center(
                           child: Column(
                             children: [
@@ -66,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                                         return Expanded(
                                           child: Padding(
                                             padding: const EdgeInsets.symmetric(
-                                              horizontal: 46,
+                                              horizontal: 30,
                                             ),
                                             child: ListView.separated(
                                               padding: EdgeInsets.zero,
