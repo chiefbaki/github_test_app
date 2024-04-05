@@ -42,7 +42,9 @@ class _HomePageState extends State<HomePage> {
             return state.status == ConnectivityStatus.connected
                 ? Stack(
                     children: [
-                      Image.asset(Images.background),
+                      Theme.of(context).brightness == Brightness.light
+                          ? const SizedBox()
+                          : Image.asset(Images.background),
                       Padding(
                         padding: const EdgeInsets.only(top: 60),
                         child: Center(

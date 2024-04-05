@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "admin": MessageLookupByLibrary.simpleMessage("Admin"),
+        "darkTheme": MessageLookupByLibrary.simpleMessage("Dark theme"),
         "followers": MessageLookupByLibrary.simpleMessage(" followers"),
         "following": MessageLookupByLibrary.simpleMessage(" following"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),

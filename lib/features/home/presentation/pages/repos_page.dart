@@ -37,7 +37,12 @@ class ReposPage extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            const ArrowBackBtn(),
+                            ArrowBackBtn(
+                              color: Theme.of(context).brightness ==
+                                      Brightness.light
+                                  ? AppColors.black
+                                  : AppColors.white,
+                            ),
                             SizedBox(
                               width: paddingUnit * 2.w,
                             ),
@@ -56,7 +61,11 @@ class ReposPage extends StatelessWidget {
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge!
-                                      .copyWith(color: AppColors.white),
+                                      .copyWith(
+                                          color: Theme.of(context).brightness ==
+                                                  Brightness.light
+                                              ? AppColors.black
+                                              : AppColors.white),
                                 )
                               ],
                             )

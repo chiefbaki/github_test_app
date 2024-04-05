@@ -6,5 +6,6 @@
   "home": "Home",
   "settings": "Settings",
   "user": "User",
-  "admin": "Admin"
+  "admin": "Admin",
+  "darkTheme": "Dark theme"
 }

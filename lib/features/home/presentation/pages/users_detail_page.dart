@@ -47,9 +47,13 @@ class UserDetailPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 50),
-                      child: ArrowBackBtn()),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 50),
+                      child: ArrowBackBtn(
+                        color: Theme.of(context).brightness == Brightness.light
+                            ? AppColors.white
+                            : AppColors.black,
+                      )),
                   Stack(
                     children: [
                       Padding(
@@ -57,9 +61,12 @@ class UserDetailPage extends StatelessWidget {
                         child: Container(
                           height: MediaQuery.of(context).size.height,
                           width: double.infinity,
-                          decoration: const BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.horizontal(
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).brightness ==
+                                      Brightness.light
+                                  ? AppColors.white
+                                  : AppColors.black,
+                              borderRadius: const BorderRadius.horizontal(
                                   left: Radius.circular(30),
                                   right: Radius.circular(30))),
                           child: SingleChildScrollView(

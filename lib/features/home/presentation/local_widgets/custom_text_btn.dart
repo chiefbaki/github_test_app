@@ -14,10 +14,10 @@ class CustomTextBtn extends StatelessWidget {
         style: TextButton.styleFrom(padding: EdgeInsets.zero),
         child: Text(
           title,
-          style: Theme.of(context)
-              .textTheme
-              .headlineLarge!
-              .copyWith(color: AppColors.white),
+          style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+              color: Theme.of(context).brightness == Brightness.light
+                  ? AppColors.black
+                  : AppColors.white),
         ));
   }
 }

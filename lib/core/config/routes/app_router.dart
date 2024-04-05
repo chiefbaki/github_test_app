@@ -17,9 +17,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: SplashRoute.page, initial: true),
         // Bottom nav bar
         AutoRoute(page: DashboardRoute.page, children: [
-          AutoRoute(page: HomeRoute.page, initial: true),
+          AutoRoute(page: HomeRoute.page, ),
           AutoRoute(
             page: SettingsRoute.page,
+            initial: true
           ),
         ]),
 

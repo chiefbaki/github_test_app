@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:git_test/core/config/settings/dio_settings.dart';
 import 'package:git_test/core/config/routes/app_router.dart';
 import 'package:git_test/core/utils/theme/app_theme.dart';
+import 'package:git_test/core/utils/theme/cubit/theme_cubit.dart';
 import 'package:git_test/features/home/data/repositories/repos_impl.dart';
 import 'package:git_test/features/home/data/repositories/details_impl.dart';
 import 'package:git_test/features/home/data/repositories/users_impl.dart';
@@ -83,31 +84,43 @@ class _MyAppState extends State<MyApp> {
           BlocProvider<InternetConnectionCubit>(
             create: (context) => InternetConnectionCubit(),
           ),
+          BlocProvider<ThemeCubit>(
+            create: (context) => ThemeCubit(),
+          ),
         ],
         child: ScreenUtilInit(
           designSize: const Size(375, 812),
           minTextAdapt: true,
           splitScreenMode: true,
-          builder: (context, child) => MaterialApp.router(
-            localizationsDelegates: const [
-              S.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            localeResolutionCallback: (locale, supportedLocales) {
-              for (var supportedLocale in supportedLocales) {
-                if (supportedLocale.languageCode == locale?.languageCode &&
-                    supportedLocale.countryCode == locale?.countryCode) {
-                  return supportedLocale;
-                }
-              }
-              return supportedLocales.first;
+          builder: (context, child) => BlocBuilder<ThemeCubit, ThemeState>(
+            builder: (context, state) {
+              return MaterialApp.router(
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                localeResolutionCallback: (locale, supportedLocales) {
+                  for (var supportedLocale in supportedLocales) {
+                    if (supportedLocale.languageCode == locale?.languageCode &&
+                        supportedLocale.countryCode == locale?.countryCode) {
+                      return supportedLocale;
+                    }
+                  }
+                  return supportedLocales.first;
+                },
+                supportedLocales: const [
+                  Locale('en', 'EN'),
+                  Locale('ru', 'RU')
+                ],
+                theme: state.brightness == Brightness.dark
+                    ? darkTheme()
+                    : lightTheme(),
+                debugShowCheckedModeBanner: false,
+                routerConfig: router.config(),
+              );
             },
-            supportedLocales: const [Locale('en', 'EN'), Locale('ru', 'RU')],
-            theme: darkTheme(),
-            debugShowCheckedModeBanner: false,
-            routerConfig: router.config(),
           ),
         ),
       ),

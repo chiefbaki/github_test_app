@@ -12,7 +12,10 @@ class CustomUserCard extends StatelessWidget {
     return Flexible(
       child: Container(
         decoration: BoxDecoration(
-            color: AppColors.grey, borderRadius: BorderRadius.circular(12)),
+            color: Theme.of(context).brightness == Brightness.light
+                ? AppColors.blue
+                : AppColors.grey,
+            borderRadius: BorderRadius.circular(12)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: CustomListTile(

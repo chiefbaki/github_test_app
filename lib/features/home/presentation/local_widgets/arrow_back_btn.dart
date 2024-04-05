@@ -1,9 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+
 class ArrowBackBtn extends StatelessWidget {
+  final Color color;
   const ArrowBackBtn({
     super.key,
+    required this.color
   });
 
   @override
@@ -12,6 +15,9 @@ class ArrowBackBtn extends StatelessWidget {
         onPressed: () {
           context.router.maybePop();
         },
-        icon: const Icon(Icons.arrow_back_outlined));
+        icon: Icon(
+          Icons.arrow_back_outlined,
+          color: color,
+        ));
   }
 }
