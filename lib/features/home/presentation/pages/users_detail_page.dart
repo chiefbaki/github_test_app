@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:git_test/core/config/routes/app_router.dart';
-import 'package:git_test/core/theme/app_colors.dart';
-import 'package:git_test/core/theme/app_fonts.dart';
+import 'package:git_test/core/utils/theme/app_colors.dart';
 import 'package:git_test/features/home/presentation/cubit/details/details_cubit.dart';
 import 'package:git_test/features/home/presentation/cubit/repos/repos_cubit.dart';
 import 'package:git_test/features/home/presentation/local_widgets/custom_text_btn.dart';
-import 'package:git_test/features/widgets/arrow_back_btn.dart';
+import 'package:git_test/features/home/presentation/local_widgets/arrow_back_btn.dart';
+import 'package:git_test/generated/l10n.dart';
 
 @RoutePage()
 class UserDetailPage extends StatelessWidget {
@@ -35,7 +35,7 @@ class UserDetailPage extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: NetworkImage(details.avatar_url),
+                          image: NetworkImage(details.avatar_url ?? ""),
                           fit: BoxFit.cover),
                     ),
                     child: ClipRect(
@@ -72,7 +72,9 @@ class UserDetailPage extends StatelessWidget {
                                   details.name != null
                                       ? Text(
                                           details.name ?? "",
-                                          style: AppFonts.s32w600,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyLarge,
                                         )
                                       : const SizedBox(),
                                   SizedBox(
@@ -80,7 +82,8 @@ class UserDetailPage extends StatelessWidget {
                                   ),
                                   Text(
                                     details.login ?? "",
-                                    style: AppFonts.s24w300,
+                                    style:
+                                        Theme.of(context).textTheme.bodyMedium,
                                   ),
                                   SizedBox(
                                     height: paddingUnit * 3.h,
@@ -88,7 +91,9 @@ class UserDetailPage extends StatelessWidget {
                                   details.bio != null
                                       ? Text(
                                           details.bio ?? "",
-                                          style: AppFonts.s20w500,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displayLarge,
                                         )
                                       : const SizedBox(),
                                   SizedBox(
@@ -107,11 +112,15 @@ class UserDetailPage extends StatelessWidget {
                                           text: TextSpan(
                                               text:
                                                   details.followers.toString(),
-                                              style: AppFonts.s14w600,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium,
                                               children: [
                                             TextSpan(
-                                                text: " followers",
-                                                style: AppFonts.s14w600
+                                                text: S.of(context).followers,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium!
                                                     .copyWith(
                                                         color: AppColors
                                                             .lightGrey))
@@ -123,11 +132,15 @@ class UserDetailPage extends StatelessWidget {
                                           text: TextSpan(
                                               text:
                                                   details.following.toString(),
-                                              style: AppFonts.s14w600,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium,
                                               children: [
                                             TextSpan(
-                                                text: " following",
-                                                style: AppFonts.s14w600
+                                                text: S.of(context).following,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium!
                                                     .copyWith(
                                                         color: AppColors
                                                             .lightGrey))
@@ -152,7 +165,9 @@ class UserDetailPage extends StatelessWidget {
                                                 Flexible(
                                                   child: Text(
                                                     details.company ?? "",
-                                                    style: AppFonts.s14w600,
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .displayMedium,
                                                   ),
                                                 ),
                                               ],
@@ -177,7 +192,9 @@ class UserDetailPage extends StatelessWidget {
                                                 ),
                                                 Text(
                                                   details.location ?? "",
-                                                  style: AppFonts.s14w600,
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .displayMedium,
                                                 ),
                                                 SizedBox(
                                                   height: paddingUnit * 3.h,
@@ -188,10 +205,12 @@ class UserDetailPage extends StatelessWidget {
                                         )
                                       : const SizedBox(),
                                   CustomTextBtn(
-                                      title: "Repositories",
+                                      title: S.of(context).repositories,
                                       onPressed: () {
-                                        context.read<ReposCubit>().getRepos(login: details.login ?? "");
-                                        context.router.push(const ReposRoute());
+                                        context.read<ReposCubit>().getRepos(
+                                            login: details.login ?? "");
+                                        context.router.push(ReposRoute(
+                                            login: details.login ?? ""));
                                       })
                                 ],
                               ),
@@ -204,7 +223,7 @@ class UserDetailPage extends StatelessWidget {
                             horizontal: 120, vertical: 220),
                         child: ClipOval(
                           child: Image.network(
-                            details.avatar_url,
+                            details.avatar_url ?? "",
                             width: 300,
                           ),
                         ),

@@ -6,7 +6,7 @@ part 'users_dto.g.dart';
 class UsersDto with _$UsersDto {
   const factory UsersDto(
       {required String? login,
-      required String avatar_url,
+      required String? avatar_url,
       required String? type,
       required String? name,
       required String? company,

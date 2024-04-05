@@ -1,0 +1,10 @@
+{
+  "title": "Github users",
+  "repositories": "Repositories",
+  "followers": " followers",
+  "following": " following",
+  "home": "Home",
+  "settings": "Settings",
+  "user": "User",
+  "admin": "Admin"
+}

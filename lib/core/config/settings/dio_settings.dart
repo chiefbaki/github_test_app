@@ -14,7 +14,7 @@ class DioSettings {
       contentType: "application/json",
       headers: {
         "Accept": "application/json",
-        "Authorization": "Bearer ${ApiConsts.token}"
+        "Authorization": ApiConsts.token
       },
       connectTimeout: const Duration(seconds: 20),
       receiveTimeout: const Duration(seconds: 20),

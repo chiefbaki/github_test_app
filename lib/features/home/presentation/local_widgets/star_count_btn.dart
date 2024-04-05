@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:git_test/core/theme/app_colors.dart';
-import 'package:git_test/core/theme/app_fonts.dart';
+import 'package:git_test/core/utils/theme/app_colors.dart';
 
 class StarCountBtn extends StatelessWidget {
   final String count;
@@ -25,7 +24,10 @@ class StarCountBtn extends StatelessWidget {
             ),
             Text(
               count,
-              style: AppFonts.s14w500.copyWith(color: AppColors.mediumGrey),
+              style: Theme.of(context)
+                  .textTheme
+                  .displayMedium!
+                  .copyWith(color: AppColors.mediumGrey),
             )
           ],
         ));

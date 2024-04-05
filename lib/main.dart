@@ -5,6 +5,7 @@ import 'package:git_test/internal/app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // avalaible only portrait adaptation
   await ScreenUtil.ensureScreenSize();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

@@ -28,9 +28,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     ReposRoute.name: (routeData) {
+      final args = routeData.argsAs<ReposRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ReposPage(),
+        child: ReposPage(
+          key: args.key,
+          login: args.login,
+        ),
       );
     },
     SettingsRoute.name: (routeData) {
@@ -84,16 +88,39 @@ class HomeRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ReposPage]
-class ReposRoute extends PageRouteInfo<void> {
-  const ReposRoute({List<PageRouteInfo>? children})
-      : super(
+class ReposRoute extends PageRouteInfo<ReposRouteArgs> {
+  ReposRoute({
+    Key? key,
+    required String? login,
+    List<PageRouteInfo>? children,
+  }) : super(
           ReposRoute.name,
+          args: ReposRouteArgs(
+            key: key,
+            login: login,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ReposRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ReposRouteArgs> page = PageInfo<ReposRouteArgs>(name);
+}
+
+class ReposRouteArgs {
+  const ReposRouteArgs({
+    this.key,
+    required this.login,
+  });
+
+  final Key? key;
+
+  final String? login;
+
+  @override
+  String toString() {
+    return 'ReposRouteArgs{key: $key, login: $login}';
+  }
 }
 
 /// generated route for

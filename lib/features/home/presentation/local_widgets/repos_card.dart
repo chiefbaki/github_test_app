@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:git_test/core/theme/app_colors.dart';
-import 'package:git_test/core/theme/app_fonts.dart';
+import 'package:git_test/core/utils/theme/app_colors.dart';
 import 'package:git_test/features/home/data/models/repos/repos_dto.dart';
 import 'package:git_test/features/home/presentation/local_widgets/fork_count_btn.dart';
 import 'package:git_test/features/home/presentation/local_widgets/star_count_btn.dart';
@@ -25,7 +24,10 @@ class ReposCard extends StatelessWidget {
                 children: [
                   Text(
                     repos.name ?? "",
-                    style: AppFonts.s20w600.copyWith(color: AppColors.blue),
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge!
+                        .copyWith(color: AppColors.blue),
                   ),
                   SizedBox(
                     width: paddingUnit * 3.w,
@@ -39,7 +41,9 @@ class ReposCard extends StatelessWidget {
                           horizontal: 5, vertical: 2),
                       child: Text(
                         repos.visibility ?? "",
-                        style: AppFonts.s14w400
+                        style: Theme.of(context)
+                            .textTheme
+                            .displaySmall!
                             .copyWith(color: AppColors.mediumGrey),
                       ),
                     ),
@@ -54,7 +58,9 @@ class ReposCard extends StatelessWidget {
                       children: [
                         Text(
                           repos.description ?? "",
-                          style: AppFonts.s14w600
+                          style: Theme.of(context)
+                              .textTheme
+                              .displaySmall!
                               .copyWith(color: AppColors.mediumGrey),
                         ),
                         SizedBox(
@@ -77,7 +83,9 @@ class ReposCard extends StatelessWidget {
                             ),
                             Text(
                               repos.language ?? "",
-                              style: AppFonts.s14w500
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .displayMedium!
                                   .copyWith(color: AppColors.mediumGrey),
                             ),
                           ],

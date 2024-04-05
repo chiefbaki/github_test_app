@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:git_test/core/config/network/network_settings/dio_settings.dart';
+import 'package:git_test/core/config/settings/dio_settings.dart';
 import 'package:git_test/core/config/routes/app_router.dart';
-import 'package:git_test/core/theme/app_theme.dart';
-import 'package:git_test/features/home/data/repository/repos_impl.dart';
-import 'package:git_test/features/home/data/repository/users_impl.dart';
+import 'package:git_test/core/utils/theme/app_theme.dart';
+import 'package:git_test/features/home/data/repositories/repos_impl.dart';
+import 'package:git_test/features/home/data/repositories/details_impl.dart';
+import 'package:git_test/features/home/data/repositories/users_impl.dart';
+import 'package:git_test/features/home/domain/usecase/details_usecase.dart';
 import 'package:git_test/features/home/domain/usecase/repos_usecase.dart';
 import 'package:git_test/features/home/domain/usecase/users_usecase.dart';
 import 'package:git_test/features/home/presentation/cubit/details/details_cubit.dart';
+import 'package:git_test/features/home/presentation/cubit/internet_connection/internet_connection_cubit.dart';
 import 'package:git_test/features/home/presentation/cubit/repos/repos_cubit.dart';
 import 'package:git_test/features/home/presentation/cubit/users/users_cubit.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:git_test/generated/l10n.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -30,35 +35,53 @@ class _MyAppState extends State<MyApp> {
           create: (context) => DioSettings(),
         ),
         RepositoryProvider(
-          create: (context) => UsersUseCase(
-              dio: RepositoryProvider.of<DioSettings>(context).dio),
+          create: (context) => UsersImpl(
+            dio: RepositoryProvider.of<DioSettings>(context).dio,
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => DetailsImpl(
+            dio: RepositoryProvider.of<DioSettings>(context).dio,
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => ReposImpl(
+            dio: RepositoryProvider.of<DioSettings>(context).dio,
+          ),
         ),
         RepositoryProvider(
           create: (context) =>
-              UsersImpl(useCase: RepositoryProvider.of<UsersUseCase>(context)),
+              (dio: RepositoryProvider.of<DioSettings>(context).dio,),
+        ),
+        RepositoryProvider(
+          create: (context) => UsersUseCase(
+              repository: RepositoryProvider.of<UsersImpl>(context)),
+        ),
+        RepositoryProvider(
+          create: (context) => DetailsUseCase(
+              repository: RepositoryProvider.of<DetailsImpl>(context)),
         ),
         RepositoryProvider(
           create: (context) => ReposUseCase(
-              dio: RepositoryProvider.of<DioSettings>(context).dio),
-        ),
-        RepositoryProvider(
-          create: (context) =>
-              ReposImpl(useCase: RepositoryProvider.of<ReposUseCase>(context)),
+              reposRepository: RepositoryProvider.of<ReposImpl>(context)),
         ),
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
             create: (context) => UsersCubit(
-                repository: RepositoryProvider.of<UsersImpl>(context)),
+                useCase: RepositoryProvider.of<UsersUseCase>(context)),
           ),
           BlocProvider(
             create: (context) => DetailsCubit(
-                repository: RepositoryProvider.of<UsersImpl>(context)),
+                useCase: RepositoryProvider.of<DetailsUseCase>(context)),
           ),
           BlocProvider(
             create: (context) => ReposCubit(
-                repository: RepositoryProvider.of<ReposImpl>(context)),
+                useCase: RepositoryProvider.of<ReposUseCase>(context)),
+          ),
+          BlocProvider<InternetConnectionCubit>(
+            create: (context) => InternetConnectionCubit(),
           ),
         ],
         child: ScreenUtilInit(
@@ -66,6 +89,22 @@ class _MyAppState extends State<MyApp> {
           minTextAdapt: true,
           splitScreenMode: true,
           builder: (context, child) => MaterialApp.router(
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            localeResolutionCallback: (locale, supportedLocales) {
+              for (var supportedLocale in supportedLocales) {
+                if (supportedLocale.languageCode == locale?.languageCode &&
+                    supportedLocale.countryCode == locale?.countryCode) {
+                  return supportedLocale;
+                }
+              }
+              return supportedLocales.first;
+            },
+            supportedLocales: const [Locale('en', 'EN'), Locale('ru', 'RU')],
             theme: darkTheme(),
             debugShowCheckedModeBanner: false,
             routerConfig: router.config(),

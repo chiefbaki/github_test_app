@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:git_test/core/theme/app_colors.dart';
-import 'package:git_test/core/theme/app_fonts.dart';
+import 'package:git_test/core/utils/theme/app_colors.dart';
 import 'package:git_test/core/utils/resources/resources.dart';
 
 class ForkCountBtn extends StatelessWidget {
@@ -24,7 +23,10 @@ class ForkCountBtn extends StatelessWidget {
             ),
             Text(
               forkCount,
-              style: AppFonts.s14w500.copyWith(color: AppColors.mediumGrey),
+              style: Theme.of(context)
+                  .textTheme
+                  .displayMedium!
+                  .copyWith(color: AppColors.mediumGrey),
             )
           ],
         ));

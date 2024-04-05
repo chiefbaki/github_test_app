@@ -9,7 +9,7 @@ part of 'users_dto.dart';
 _$UsersDtoImpl _$$UsersDtoImplFromJson(Map<String, dynamic> json) =>
     _$UsersDtoImpl(
       login: json['login'] as String?,
-      avatar_url: json['avatar_url'] as String,
+      avatar_url: json['avatar_url'] as String?,
       type: json['type'] as String?,
       name: json['name'] as String?,
       company: json['company'] as String?,

@@ -21,7 +21,7 @@ UsersDto _$UsersDtoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UsersDto {
   String? get login => throw _privateConstructorUsedError;
-  String get avatar_url => throw _privateConstructorUsedError;
+  String? get avatar_url => throw _privateConstructorUsedError;
   String? get type => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get company => throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ abstract class $UsersDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {String? login,
-      String avatar_url,
+      String? avatar_url,
       String? type,
       String? name,
       String? company,
@@ -67,7 +67,7 @@ class _$UsersDtoCopyWithImpl<$Res, $Val extends UsersDto>
   @override
   $Res call({
     Object? login = freezed,
-    Object? avatar_url = null,
+    Object? avatar_url = freezed,
     Object? type = freezed,
     Object? name = freezed,
     Object? company = freezed,
@@ -81,10 +81,10 @@ class _$UsersDtoCopyWithImpl<$Res, $Val extends UsersDto>
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
               as String?,
-      avatar_url: null == avatar_url
+      avatar_url: freezed == avatar_url
           ? _value.avatar_url
           : avatar_url // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -127,7 +127,7 @@ abstract class _$$UsersDtoImplCopyWith<$Res>
   @useResult
   $Res call(
       {String? login,
-      String avatar_url,
+      String? avatar_url,
       String? type,
       String? name,
       String? company,
@@ -149,7 +149,7 @@ class __$$UsersDtoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? login = freezed,
-    Object? avatar_url = null,
+    Object? avatar_url = freezed,
     Object? type = freezed,
     Object? name = freezed,
     Object? company = freezed,
@@ -163,10 +163,10 @@ class __$$UsersDtoImplCopyWithImpl<$Res>
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
               as String?,
-      avatar_url: null == avatar_url
+      avatar_url: freezed == avatar_url
           ? _value.avatar_url
           : avatar_url // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -219,7 +219,7 @@ class _$UsersDtoImpl implements _UsersDto {
   @override
   final String? login;
   @override
-  final String avatar_url;
+  final String? avatar_url;
   @override
   final String? type;
   @override
@@ -282,7 +282,7 @@ class _$UsersDtoImpl implements _UsersDto {
 abstract class _UsersDto implements UsersDto {
   const factory _UsersDto(
       {required final String? login,
-      required final String avatar_url,
+      required final String? avatar_url,
       required final String? type,
       required final String? name,
       required final String? company,
@@ -297,7 +297,7 @@ abstract class _UsersDto implements UsersDto {
   @override
   String? get login;
   @override
-  String get avatar_url;
+  String? get avatar_url;
   @override
   String? get type;
   @override

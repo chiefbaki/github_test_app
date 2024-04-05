@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:git_test/core/theme/app_colors.dart';
-import 'package:git_test/core/theme/app_fonts.dart';
+import 'package:git_test/core/utils/theme/app_colors.dart';
 
 class CustomTextBtn extends StatelessWidget {
   final String title;
@@ -15,7 +14,10 @@ class CustomTextBtn extends StatelessWidget {
         style: TextButton.styleFrom(padding: EdgeInsets.zero),
         child: Text(
           title,
-          style: AppFonts.s16w600.copyWith(color: AppColors.white),
+          style: Theme.of(context)
+              .textTheme
+              .headlineLarge!
+              .copyWith(color: AppColors.white),
         ));
   }
 }

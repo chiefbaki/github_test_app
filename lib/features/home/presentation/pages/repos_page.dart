@@ -2,16 +2,19 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:git_test/core/theme/app_colors.dart';
-import 'package:git_test/core/theme/app_fonts.dart';
+import 'package:git_test/core/utils/theme/app_colors.dart';
 import 'package:git_test/features/home/presentation/cubit/repos/repos_cubit.dart';
-
 import 'package:git_test/features/home/presentation/local_widgets/repos_card.dart';
-import 'package:git_test/features/widgets/arrow_back_btn.dart';
+import 'package:git_test/features/home/presentation/local_widgets/arrow_back_btn.dart';
+import 'package:git_test/generated/l10n.dart';
 
 @RoutePage()
 class ReposPage extends StatelessWidget {
-  const ReposPage({super.key,});
+  final String? login;
+  const ReposPage({
+    super.key,
+    required this.login,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,8 @@ class ReposPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 60),
+          padding:
+              const EdgeInsets.only(left: 13, right: 13, top: 60, bottom: 30),
           child: BlocBuilder<ReposCubit, ReposState>(
             builder: (context, state) {
               return state.when(
@@ -41,13 +45,17 @@ class ReposPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  repos.first.login.toString(),
-                                  style: AppFonts.s16w600
+                                  login ?? "",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineLarge!
                                       .copyWith(color: AppColors.mediumGrey),
                                 ),
                                 Text(
-                                  "Repositories",
-                                  style: AppFonts.s20w600
+                                  S.of(context).repositories,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge!
                                       .copyWith(color: AppColors.white),
                                 )
                               ],
@@ -64,7 +72,7 @@ class ReposPage extends StatelessWidget {
                                 shrinkWrap: true,
                                 itemBuilder: (_, index) {
                                   return ReposCard(
-                                    repos: repos[index],
+                                      repos: repos[index],
                                       paddingUnit: paddingUnit);
                                 },
                                 separatorBuilder: (_, index) => const Padding(
